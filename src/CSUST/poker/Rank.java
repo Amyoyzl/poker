@@ -6,10 +6,13 @@ package CSUST.poker;
  * @author Amy_oyzl
  *
  */
-public enum Number {
+public enum Rank {
 
-	_3(3, '3'), _4(4, '4'), _5(5, '5'), _6(6, '6'), _7(7, '7'), _8(8, '8'), _9(9, '9'), _10(10, '0'), _J(11,
-			'J'), _Q(12, 'Q'), _K(13, 'K'), _A(14, 'A'), _2(15, '2');
+	THREE(3, "3"), FOUR(4, "4"), FIVE(5, "5"), 
+	SIX(6, "6"), SEVEN(7, "7"), EIGHT(8, "8"), 
+	NINE(9, "9"), TEN(10, "10"), JACK(11, "J"), 
+	QUEEN(12, "Q"), KING(13, "K"), ACE(14, "A"), 
+	DEUCE(15, "2");
 
 	/**
 	 * 面值的数值
@@ -19,7 +22,7 @@ public enum Number {
 	/**
 	 * 面值的名称
 	 */
-	private char name;
+	private String name;
 
 	/**
 	 * 构造方法
@@ -29,7 +32,7 @@ public enum Number {
 	 * @param name
 	 *            面值的名称
 	 */
-	Number(int num, char name) {
+	Rank(int num, String name) {
 		this.num = num;
 		this.name = name;
 	}
@@ -38,7 +41,7 @@ public enum Number {
 		return num;
 	}
 
-	public char getName() {
+	public String getName() {
 		return name;
 	}
 

@@ -2,59 +2,39 @@ package CSUST.poker;
 
 public class Game {
 
-	Poker[] pokers;
+	private Poker poker;
+	int mark = poker.size;
 
-	Player[] players;
+	public Game() {
+		poker = new Poker();
+	}
 
-	public Game(Player[] players) {
-		this.players = players;
-		pokers = new Poker[52];
-		for (int i = 0; i < 4; i++) {
-			for (int j = 13 * i; j < 13 * (i + 1); j++) {
-				pokers[j] = new Poker(i, j % 13);
-			}
-		}
+	public Poker getPoker() {
+		return poker;
 	}
 
 	/**
 	 * 洗牌
 	 */
-	public void start() {
-		Poker temp = new Poker();
-		for (int i = 0; i < pokers.length; i++) {
-			int j = (int) (Math.random() * pokers.length);
-			temp = pokers[j];
-			pokers[j] = pokers[0];
-			pokers[0] = temp;
+	public void shuffle() {
+		Card[] cards = poker.getCards();
+		for (int i = cards.length - 1; i >= 0; i--) {
+			int r = (int) (Math.random() * i);
+			Card t = cards[i];
+			cards[i] = cards[r];
+			cards[r] = t;
 		}
 	}
 
-	/**
-	 * 发牌
-	 */
-	public void divide() {
-		int len = pokers.length / players.length;
-		int k = 0;
-		for (int i = 0; i < players.length; i++) {
-			Poker[] t = new Poker[len];
-			for (int j = 0; j < len; j++) {
-				t[j] = pokers[k];
-				k++;
-			}
-			players[i].setPokers(t);
+	public Card[] divide(int number) {
+		Card[] c = new Card[number];
+		for(int i = 0; i < number; i++) {
+			c[i] = poker.getCards()[--mark];
 		}
+		return c;
 	}
 	
-	public void arrange() {
-		for(Player e : players) {
-			e.arrange();
-		}
-	}
 	
-	public void print() {
-		for (Player e : players) {
-			e.print();
-		}
-	}
+	
 
 }
