@@ -6,7 +6,7 @@ package CSUST.poker;
  * @author Amy_oyzl
  *
  */
-public class Card {
+public class Card implements Comparable<Card> {
 
 	// 花色
 	Suit suit;
@@ -35,6 +35,13 @@ public class Card {
 	@Override
 	public String toString() {
 		return String.format("%2s%c ", rank.getName(), suit.getName());
+	}
+
+	@Override
+	public int compareTo(Card o) {
+		int r = suit.compareTo(o.suit);
+		return (r != 0) ? r : (rank.compareTo(o.rank));
+//		return rank.compareTo(o.rank);
 	}
 
 }

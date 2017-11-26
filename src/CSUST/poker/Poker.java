@@ -16,7 +16,6 @@ public class Poker {
 				cards[k++] = new Card(s, r);
 			}
 		}
-		// Collections.shuffle(list);
 	}
 
 	public Card[] getCards() {
